@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:if="${user.getUser().getUserType().equals(user.getUser().getUserType().MANAGER)}">
+
+
+    <div class="container">
+        <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="panel-title">Create Waiter</div>
+                </div>
+
+                <div style="padding-top:30px" class="panel-body">
+
+                    <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+
+                    <form id="loginform" class="form-horizontal" role="form" action="/manager/create/waiter"
+                          method="post">
+
+                        <div style="margin-bottom: 25px" class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input id="name" type="text" class="form-control" name="name" value="" placeholder="name ">
+                        </div>
+
+                        <div style="margin-bottom: 25px" class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input id="surname" type="text" class="form-control" name="surname" value=""
+                                   placeholder="surname">
+                        </div>
+
+                        <div style="margin-bottom: 25px" class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input id="login-username" type="text" class="form-control" name="username" value=""
+                                   placeholder="username ">
+                        </div>
+
+                        <div style="margin-bottom: 25px" class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                            <input id="login-password" type="password" class="form-control" name="password"
+                                   placeholder="password">
+                        </div>
+
+
+                        <div style="margin-top:10px" class="form-group">
+                            <!-- Button -->
+
+                            <div class="col-sm-12 controls">
+                                <button type="submit" id="btn-login" class="btn btn-success">Create</button>
+
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="panel-title">Create Table</div>
+                </div>
+
+                <div style="padding-top:30px" class="panel-body">
+
+                    <div style="display:none" class="alert alert-danger col-sm-12"></div>
+
+                    <form class="form-horizontal" role="form" action="/manager/create/table" method="post">
+
+                        <div style="margin-bottom: 25px" class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input id="number" type="number" class="form-control" name="number" value=""
+                                   placeholder="number ">
+                        </div>
+
+                        <div style="margin-bottom: 25px" class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+
+                            <input id="charsCount" type="number" class="form-control" name="chairsCount" value=""
+                                   placeholder="chairsCount">
+                        </div>
+
+                        <div style="margin-bottom: 25px" class="input-group" th:each="waiter : ${waiters}">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i><span
+                                    th:text="${waiter.name}"></span></span>
+                            <input id="waiter" type="radio" class="form-control" name="user" th:value="${waiter.id}">
+                        </div>
+
+                        <div style="margin-top:10px" class="form-group">
+                            <!-- Button -->
+
+                            <div class="col-sm-12 controls">
+                                <button type="submit" class="btn btn-success">Create</button>
+
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="panel-title">Create Product</div>
+                </div>
+
+                <div style="padding-top:30px" class="panel-body">
+
+                    <div style="display:none" class="alert alert-danger col-sm-12"></div>
+
+                    <form class="form-horizontal" role="form" action="/manager/create/product" method="post">
+
+                        <div style="margin-bottom: 25px" class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input id="product_name" type="text" class="form-control" name="name" value=""
+                                   placeholder="name">
+                        </div>
+
+                        <div style="margin-bottom: 25px" class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+
+                            <input id="price" type="text" class="form-control" name="price" value=""
+                                   placeholder="price">
+                        </div>
+
+
+                        <div style="margin-top:10px" class="form-group">
+                            <!-- Button -->
+
+                            <div class="col-sm-12 controls">
+                                <button type="submit" class="btn btn-success">Create</button>
+
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<div th:if="${user.getUser().getUserType().equals(user.getUser().getUserType().WAITER)}">
+    <div class="container">
+        <div style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="panel-title">Create Order</div>
+                </div>
+
+                <div style="padding-top:30px" class="panel-body">
+
+                    <div style="display:none" class="alert alert-danger col-sm-12"></div>
+
+                    <form class="form-horizontal" role="form" action="/waiter/create/order" method="post">
+
+                        <div style="margin-bottom: 25px" class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input id="order_name" type="text" class="form-control" name="name" value=""
+                                   placeholder="name ">
+                        </div>
+
+
+                        <div style="margin-bottom: 25px" class="input-group" th:each="table : ${tables}">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i><span
+                                    th:text="${table.number}"></span></span>
+                            <input id="table" type="radio" class="form-control" name="table" th:value="${table.id}">
+                        </div>
+
+                        <div style="margin-top:10px" class="form-group">
+                            <!-- Button -->
+
+                            <div class="col-sm-12 controls">
+                                <button type="submit" class="btn btn-success">Create</button>
+
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="panel-title">Create ProductInOrder</div>
+                </div>
+
+                <div style="padding-top:30px" class="panel-body">
+
+                    <div style="display:none" class="alert alert-danger col-sm-12"></div>
+
+                    <form class="form-horizontal" role="form" action="/waiter/create/productInOrder" method="post">
+
+                        <div style="margin-bottom: 25px" class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input id="productInOrder_name" type="text" class="form-control" name="name" value=""
+                                   placeholder="name ">
+                        </div>
+                        <div style="margin-bottom: 25px" class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input id="amount" type="number" class="form-control" name="amount" value=""
+                                   placeholder="amount ">
+                        </div>
+
+
+                        <div style="margin-bottom: 25px" class="input-group" th:each="order : ${waiterOrders}">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i><span
+                                    th:text="${order.name}"></span></span>
+                            <input id="status" type="radio" class="form-control" name="order" th:value="${order.id}">
+                        </div>
+
+                        <div style="margin-bottom: 25px" class="input-group" th:each="product : ${products}">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i><span
+                                    th:text="${product.name}"></span></span>
+                            <input type="radio" class="form-control" name="product" th:value="${product.id}">
+                        </div>
+
+                        <div style="margin-top:10px" class="form-group">
+                            <!-- Button -->
+
+                            <div class="col-sm-12 controls">
+                                <button type="submit" class="btn btn-success">Create</button>
+
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+</body>
+</html>
